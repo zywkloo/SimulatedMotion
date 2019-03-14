@@ -19,13 +19,14 @@ func getInput()->String {
 
 func isPalindrome(input: String) -> Bool {
     let in1st = input.startIndex
+    let in2nd = input.index(after: input.startIndex)
     let inLast = input.index(before: input.endIndex)
     let startChr:Character = input[in1st]
     let endChr:Character = input[inLast]
     if (input.count == 0 || input.count == 1 ) { return true }
-    else if (input.count == 2) { return startChr == endChr }
     else {
-        return startChr == endChr ? isPalindrome( input: String(input[in1st..<inLast]) ):false
+        //print (input[in2nd..<inLast] )
+        return startChr == endChr ? isPalindrome( input: String(input[in2nd..<inLast]) ):false
     }
 }
 
@@ -44,9 +45,20 @@ print ("\(s1)==\(s2) is \(s1==s2)")
 var ball: Ball = Ball()
 print ("The ball is " + ball.getColor())
 
-print(" \u{1F496} Please enter your name 🐶" + " + Return")
+print("Please enter your name \u{1F496}" + " + Return")
 var inputString = getInput()
 print ("Hello " + inputString)
+var flag:Bool = true;
+while ( flag ) {
+    print("Please Enter a String 🐶 " + " + Return")
+    let inStr = getInput()
+    if (inStr == "quit") {
+        flag = false
+    } else {
+        print ("isPalindrome( \(inStr) ) --> \(isPalindrome(input: inStr)) \n")
+    }
+   
+}
 
 /*
 extension String {
