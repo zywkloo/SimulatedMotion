@@ -10,7 +10,7 @@ import Foundation
 
 class StringHandler{
 
-    static func isPalindrome(input: String) -> Bool {
+    static func isPalindrome(input: String) -> Bool {  //helper func to check a string isPalindrome
         let in1st = input.startIndex
         let in2nd = input.index(after: input.startIndex)
         let inLast = input.index(before: input.endIndex)
@@ -18,7 +18,6 @@ class StringHandler{
         let endChr:Character = input[inLast]
         if (input.count == 0 || input.count == 1 ) { return true }
         else {
-            //print (input[in2nd..<inLast] )
             return startChr == endChr ? isPalindrome( input: String(input[in2nd..<inLast]) ):false
         }
     }

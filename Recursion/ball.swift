@@ -11,28 +11,27 @@ import Foundation
 class Ball {
     private var color:String = "red"
     
-    private var Inix:Float
+    private var Inix:Float  //initial X, Y , vertical and horizontal vecolity
     private var Iniy:Float
     private var IniVx:Float
     private var IniVy:Float
     
-    private var Ex:Float
+    private var Ex:Float       //Euler X, Y , vertical and horizontal  vecolity
     private var Ey:Float
     private var EVx:Float
     private var EVy:Float
     
-    private var Cx:Float
+    private var Cx:Float       //Theoretical X, Y ,vertical and horizontal vecolity
     private var Cy:Float
     private var CVx:Float
     private var CVy:Float
 
     private static let GRAVITY_g:Float = -9.88
-    //private static let TOTAL_TIME:Float = 17.02
     
-    private var Ax:Float
+    private var Ax:Float    // vertical and horizontal Acceleration
     private var Ay:Float
     
-    private var lastTime:Float
+    private var lastTime:Float  //the last time stamp. Provided for caculating fragmental time, which is the remainder when devided by delta
     
     
     init (height:Float, angle:Float, velocity:Float){
@@ -50,7 +49,7 @@ class Ball {
         self.CVx = v * cos(a * Float.pi / 180)
         self.CVy = v * sin(a * Float.pi / 180)
         self.Ax = 0
-        self.Ay = Ball.GRAVITY_g
+        self.Ay = Ball.GRAVITY_g  // Ay = gravity by default
         self.lastTime = 0.0
     }
     
@@ -64,7 +63,8 @@ class Ball {
         self.EVy += delta * self.Ay
         self.Ex += delta * self.EVx
         self.Ey += delta * self.EVy
-        self.lastTime = time
+        self.lastTime = time  // update the previous timestamp.
+        //the current time stamp will be updated outside in while loop
     }
     
     func updateCalPos(time:Float) {  //update the theoretical x y coordinates
@@ -85,12 +85,13 @@ class Ball {
         while (time < groundTime ) {
             updateEulerPos(time:time)
             updateCalPos(time:time)
-            print("\(time.format(f: "6.3"))   \(self.Cx.format(f: "8.2"))        \(self.Cy.format(f: "6.2"))          |    \(self.Ex.format(f: "8.2"))  \(self.Ey.format(f: "6.2"))  ")
-            time += delta
+            print("\(time.format(f: "6.3"))   \(self.Cx.format(f: "8.2"))        \(self.Cy.format(f: "6.2"))          ⚽️   \(self.Ex.format(f: "8.2"))  \(self.Ey.format(f: "6.2"))  ")
+            time += delta //update the current time
         }
+        time = groundTime
         updateEulerPos(time:groundTime) //print the situation when the ball is on the gound
         updateCalPos(time:groundTime)
-        print("\(groundTime.format(f: "6.3"))   \(self.Cx.format(f: "8.2"))        \(self.Cy.format(f: "6.2"))          |    \(self.Ex.format(f: "8.2"))  \(self.Ey.format(f: "6.2"))  ")
+        print("\(groundTime.format(f: "6.3"))   \(self.Cx.format(f: "8.2"))        \(self.Cy.format(f: "6.2"))          🏀    \(self.Ex.format(f: "8.2"))  \(self.Ey.format(f: "6.2"))  ")
     }
 }
 

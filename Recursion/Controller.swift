@@ -28,6 +28,7 @@ class Controller:NSObject{
         var inStr:String
         var hei,ang,vel,div:Float?
         while ( flag ) {
+            print("🏀⚽️🏐️🏀⚽️🏐️🏀⚽️🏐️🏀⚽️🏐️🏀⚽️🏐️🏀⚽️🏐️🏀⚽️🏐️🏀⚽️🏐️🏀⚽️🏐️🏀⚽️🏐️🏀⚽️🏐️🏀⚽️🏐️")
             print("Type \"quit\" at any time to quit the app.🐱")
             print("Please Enter initial HEIGHT of the projectile above the ground (in meters) 🐶")
             inStr = getInput()
@@ -47,7 +48,7 @@ class Controller:NSObject{
                 ang = Float(inStr)
             }
             
-            print("initial velocity of the projectile (in meters/sec).🐭")
+            print("initial VELOCITY of the projectile (in meters/sec).🐭")
             inStr = getInput()
             if (inStr == "quit") {
                 flag = false
@@ -56,7 +57,7 @@ class Controller:NSObject{
                 vel = Float(inStr)
             }
             
-            print("number of divisions per second for the simulation to use (e.g. 100).🐰")
+            print("number of DIVISIONS per second for the simulation to use (e.g. 100).🐰")
             inStr = getInput()
             if (inStr == "quit") {
                 flag = false
@@ -73,9 +74,5 @@ class Controller:NSObject{
             ball.advance(division: d)
             
         }
-        
-        
-        
-        
     }
 }
