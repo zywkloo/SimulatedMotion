@@ -35,7 +35,7 @@ class Ball {
     
     
     init (height:Float, angle:Float, velocity:Float){
-        let h = height , a = angle, v = velocity
+        let h = height , a = angle, v = velocity  // abbrev for the input para
         self.IniVx = v * cos(a * Float.pi / 180)
         self.IniVy = v * sin(a * Float.pi / 180)
         self.Inix = 0.0
