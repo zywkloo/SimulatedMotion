@@ -85,13 +85,13 @@ class Ball {
         while (time < groundTime ) {
             updateEulerPos(time:time)
             updateCalPos(time:time)
-            print("\(time.format(f: "6.3"))   \(self.Cx.format(f: "8.2"))        \(self.Cy.format(f: "6.2"))          🥚   \(self.Ex.format(f: "8.2"))  \(self.Ey.format(f: "6.2"))  ")
+            print("\(time.format(f: "6.3"))   \(self.Cx.format(f: "8.2"))        \(self.Cy.format(f: "8.2"))          🥚   \(self.Ex.format(f: "8.2"))  \(self.Ey.format(f: "8.2"))  ")
             time += delta //update the current time
         }
         time = groundTime
-        updateEulerPos(time:groundTime) //print the situation when the ball is on the gound
-        updateCalPos(time:groundTime)
-        print("\(groundTime.format(f: "6.3"))   \(self.Cx.format(f: "8.2"))       \(self.Cy.format(f: "6.2"))         🐔    \(self.Ex.format(f: "8.2"))  \(self.Ey.format(f: "6.2"))  ")
+        updateEulerPos(time:time) //print the situation when the ball is on the gound
+        updateCalPos(time:time)
+        print("\(time.format(f: "6.3"))   \(self.Cx.format(f: "8.2"))       \(self.Cy.format(f: "8.2"))           🐔   \(self.Ex.format(f: "8.2"))  \(self.Ey.format(f: "8.2"))  ")
     }
 }
 
