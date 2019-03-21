@@ -8,7 +8,8 @@
 
 import Foundation
 
-
+let c = Controller()
+c.launch()
 
 
 
