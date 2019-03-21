@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		C500237C223A13CC0057C165 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C500237B223A13CC0057C165 /* main.swift */; };
 		C5002383223A156C0057C165 /* ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5002382223A156C0057C165 /* ball.swift */; };
+		C5B14C952242BB4400A2B196 /* Projectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B14C942242BB4400A2B196 /* Projectile.swift */; };
+		C5B14C972242BB9A00A2B196 /* stringHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B14C962242BB9A00A2B196 /* stringHandler.swift */; };
+		C5B14C992242BC3200A2B196 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B14C982242BC3200A2B196 /* Controller.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +30,9 @@
 		C5002378223A13CC0057C165 /* Recursion */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Recursion; sourceTree = BUILT_PRODUCTS_DIR; };
 		C500237B223A13CC0057C165 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		C5002382223A156C0057C165 /* ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ball.swift; sourceTree = "<group>"; };
+		C5B14C942242BB4400A2B196 /* Projectile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projectile.swift; sourceTree = "<group>"; };
+		C5B14C962242BB9A00A2B196 /* stringHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stringHandler.swift; sourceTree = "<group>"; };
+		C5B14C982242BC3200A2B196 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +66,10 @@
 			isa = PBXGroup;
 			children = (
 				C500237B223A13CC0057C165 /* main.swift */,
+				C5B14C942242BB4400A2B196 /* Projectile.swift */,
 				C5002382223A156C0057C165 /* ball.swift */,
+				C5B14C962242BB9A00A2B196 /* stringHandler.swift */,
+				C5B14C982242BC3200A2B196 /* Controller.swift */,
 			);
 			path = Recursion;
 			sourceTree = "<group>";
@@ -122,8 +131,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5B14C992242BC3200A2B196 /* Controller.swift in Sources */,
+				C5B14C952242BB4400A2B196 /* Projectile.swift in Sources */,
 				C5002383223A156C0057C165 /* ball.swift in Sources */,
 				C500237C223A13CC0057C165 /* main.swift in Sources */,
+				C5B14C972242BB9A00A2B196 /* stringHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
