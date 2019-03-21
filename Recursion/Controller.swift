@@ -36,7 +36,7 @@ class Controller:NSObject{
                 flag = false
                 break
             } else {
-                hei = Float(inStr)
+                hei = Float(inStr)  //get the height
             }
             
             print("initial ANGLE of release (in degrees)🐷")
@@ -45,7 +45,7 @@ class Controller:NSObject{
                 flag = false
                 break
             } else {
-                ang = Float(inStr)
+                ang = Float(inStr)  //get the angle
             }
             
             print("initial VELOCITY of the projectile (in meters/sec).🐭")
@@ -54,7 +54,7 @@ class Controller:NSObject{
                 flag = false
                 break
             } else {
-                vel = Float(inStr)
+                vel = Float(inStr)  //get the velocity
             }
             
             print("number of DIVISIONS per second for the simulation to use (e.g. 100).🐰")
@@ -63,16 +63,15 @@ class Controller:NSObject{
                 flag = false
                 break
             } else {
-                div = Float(inStr)
+                div = Float(inStr)  //get the division
             }
             
             guard let h = hei , let a = ang, let v = vel ,let d = div else {
                 print("Init failed, h \(String(describing: hei)) ,a\(String(describing: ang)), v\(String(describing: vel)) .\n ")
-                continue
+                continue  //input error checking
             }
-            let ball =  Ball( height: h, angle:a, velocity:v)
-            ball.advance(division: d)
-            
+            let ball =  Ball( height: h, angle:a, velocity:v)  // init a new ball
+            ball.advance(division: d)  //advance the ball
         }
     }
 }

@@ -8,8 +8,8 @@
 
 import Foundation
 
-let c = Controller()
-c.launch()
+let c = Controller()  //new a controller
+c.launch()  //lanch the app 
 
 
 
