@@ -8,33 +8,95 @@
 
 import Foundation
 
-class Ball{
-    var color:String = "red"
+class Ball {
+    private var color:String = "red"
+    
+    private var Inix:Float
+    private var Iniy:Float
+    private var IniVx:Float
+    private var IniVy:Float
+    
+    private var Ex:Float
+    private var Ey:Float
+    private var EVx:Float
+    private var EVy:Float
+    
+    private var Cx:Float
+    private var Cy:Float
+    private var CVx:Float
+    private var CVy:Float
+
+    private static let GRAVITY_g:Float = -9.88
+    //private static let TOTAL_TIME:Float = 17.02
+    
+    private var Ax:Float
+    private var Ay:Float
+    
+    private var lastTime:Float
+    
+    
+    init (height:Float, angle:Float, velocity:Float){
+        let h = height , a = angle, v = velocity
+        self.IniVx = v * cos(a * Float.pi / 180)
+        self.IniVy = v * sin(a * Float.pi / 180)
+        self.Inix = 0.0
+        self.Iniy = h
+        self.Ex = 0.0
+        self.Ey = h
+        self.Cx = 0
+        self.Cy = h
+        self.EVx = v * cos(a * Float.pi / 180)
+        self.EVy = v * sin(a * Float.pi / 180)
+        self.CVx = v * cos(a * Float.pi / 180)
+        self.CVy = v * sin(a * Float.pi / 180)
+        self.Ax = 0
+        self.Ay = Ball.GRAVITY_g
+        self.lastTime = 0.0
+    }
+    
     func getColor()->String{
         return color
     }
+    
+    func updateEulerPos(time:Float) {
+        let delta = time - self.lastTime
+        self.EVx += delta * self.Ax
+        self.EVy += delta * self.Ay
+        self.Ex += delta * self.EVx
+        self.Ey += delta * self.EVy
+        self.lastTime = time
+    }
+    
+    func updateCalPos(time:Float) {  //update the theoretical x y coordinates
+        self.Cx = time * self.IniVx + 0.5 * self.Ax * time * time + self.Inix
+        self.Cy =  0.5 * self.Ay * time * time +  self.IniVy * time  + self.Iniy
+    }
+    
+   
+    
+    func advance(division:Float){  //850 30 70 50 by default
+        var time:Float = 0.0
+        let delta:Float = 1.0/division
+        let numerator:Float =  -self.IniVy - (self.IniVy * self.IniVy - 2 * self.Iniy * self.Ay).squareRoot()
+        let denominator:Float =  self.Ay  //2a
+        let groundTime:Float = numerator/denominator  // ( -b + squreRoot( squre(b) -4ac ) ) /2a 。 this is one of the solution, when Cy = 0
+        //print(groundTime)
+        print("  Time   Theoretical_X    Theoretical_Y           Euler_X    Euler_Y  ") //header
+        while (time < groundTime ) {
+            updateEulerPos(time:time)
+            updateCalPos(time:time)
+            print("\(time.format(f: "6.3"))   \(self.Cx.format(f: "8.2"))        \(self.Cy.format(f: "6.2"))          |    \(self.Ex.format(f: "8.2"))  \(self.Ey.format(f: "6.2"))  ")
+            time += delta
+        }
+        updateEulerPos(time:groundTime) //print the situation when the ball is on the gound
+        updateCalPos(time:groundTime)
+        print("\(groundTime.format(f: "6.3"))   \(self.Cx.format(f: "8.2"))        \(self.Cy.format(f: "6.2"))          |    \(self.Ex.format(f: "8.2"))  \(self.Ey.format(f: "6.2"))  ")
+    }
 }
 
-/*
-extension String {
-    func index(from: Int) -> Index {
-        return self.index(startIndex, offsetBy: from)
-    }
-    
-    func substring(from: Int) -> String {
-        let fromIndex = index(from: from)
-        return substring(from: fromIndex)
-    }
-    
-    func substring(to: Int) -> String {
-        let toIndex = index(from: to)
-        return substring(to: toIndex)
-    }
-    
-    func substring(with r: Range<Int>) -> String {
-        let startIndex = index(from: r.lowerBound)
-        let endIndex = index(from: r.upperBound)
-        return substring(with: startIndex..<endIndex)
+extension Float {  //conform with the Float protocol, and then rewrite a formatter
+    func format(f: String) -> String {
+        return String(format: "%\(f)f", self)
     }
 }
-*/
+
